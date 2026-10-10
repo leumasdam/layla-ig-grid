@@ -508,7 +508,7 @@
     $("[data-view]").value = st.view;
     $("[data-toggle=num]").classList.toggle("btn--blue", st.num);
     $("[data-toggle=bad]").classList.toggle("btn--blue", st.bad);
-    $("[data-toggle=depth]").classList.toggle("btn--blue", st.depth);
+    $("[data-toggle=depth]")?.classList.toggle("btn--blue", st.depth);
     $$("[data-seg=look] button").forEach((b) => b.classList.toggle("on", b.dataset.v === st.look));
     $("[data-act=undo]").disabled = !st.undo.length; $("[data-act=redo]").disabled = !st.redo.length;
     $$("[data-opt]").forEach((el) => { if (el.type === "checkbox") el.checked = !!st.opt[el.dataset.opt]; else el.value = st.opt[el.dataset.opt]; });
