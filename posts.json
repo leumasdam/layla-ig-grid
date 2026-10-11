@@ -625,7 +625,7 @@
   "L": 213,
   "red": 0,
   "head": null,
-  "q": 1,
+  "q": 3,
   "edge": 189,
   "darkShare": 0.1
  },
@@ -653,7 +653,7 @@
   "L": 236,
   "red": 0,
   "head": "dotyk",
-  "q": 1,
+  "q": 3,
   "edge": 234,
   "darkShare": 0.0
  },

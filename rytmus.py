@@ -12,6 +12,8 @@ LIGHT_EXTRA = {"p17", "p35"}               # krémové horné pole -> vo feede p
 light = [p for p in old if L[p] > 170 or p in LIGHT_EXTRA]
 dark = [p for p in old if p not in light]
 FIRST = "p03"                               # logo LAYLA ako prvý (svetlý) post
+HIGH = {"p48": 12, "p46": 12}              # obľúbený štýl (riedke verzálky) -> do prvých 4 riadkov
+for p in HIGH: P[p]["q"] = 3
 assert len(light) == (len(old) + 1) // 2, (len(light), len(dark))
 n, C = len(old), 3
 
@@ -29,6 +31,10 @@ def cost(o):
             b = P[o[j]]; rj, cj = divmod(j, C); dist = abs(rj - r) + abs(cj - c)
             if a["grp"] and a["grp"] == b["grp"] and dist <= 4: t += 20 / dist
             elif a["head"] and a["head"] == b["head"] and dist <= 3: t += 9 / dist
+        if p in HIGH and i >= HIGH[p]: t += 40 + (i - HIGH[p]) * 4
+        if p == "p48":                                         # obe verzálkové od seba aspoň cez riadok
+            k = o.index("p46"); d = abs(k // C - r) + abs(k % C - c)
+            if d <= 2: t += 30
         if c == 0 and i + 2 < n:                               # pestrý riadok
             t += (3 - len({P[o[k]]["cat"] for k in range(i, i + 3)})) * 1.5
     return t
